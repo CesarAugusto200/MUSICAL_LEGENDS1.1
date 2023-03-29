@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 function FormRegister(){
     const navigate = useNavigate()
     const name = useRef()
@@ -60,6 +62,8 @@ function FormRegister(){
         </div>
 
         <button className='boton' type="button" onClick={handlerClick}>Registrarse</button>
+        <Link className="link" to="/register">No tienes cuenta? Registrate aqui</Link>
+
     </form>
         </>
     )

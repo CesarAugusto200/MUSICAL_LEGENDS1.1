@@ -8,9 +8,10 @@ function Citas(){
     
     var raw = JSON.stringify({
       "name":  nombre,
-      "product": producto,
-      "quantityOfProducts": cantidad,
-      "typeOfService": servicio
+      "phone": telefono,
+      "email": email,
+      "courseType": servicio,
+
     });
     
     var requestOptions = {
