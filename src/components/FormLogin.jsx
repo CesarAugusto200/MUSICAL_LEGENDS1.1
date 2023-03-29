@@ -6,6 +6,8 @@ function FormLogin(){
         e.preventDefaul();
     }
     return(
+        <>
+               
         <div>
      
                    <form className="Conteiner"  > 
@@ -21,13 +23,16 @@ function FormLogin(){
                <input type="password" id="contrasenia" name='contrasenia' />
            </div>
                </div>
-               <button type="button" onClick={handlerClick}>Inicar session</button>
+               <button className="boton" type="button" onClick={handlerClick}>Inicar session</button>
                <Link className="link" to="/register">No tienes cuenta? Registrate aqui</Link>
      
        </form>
 
        
     </div>
+
+       
+        </>
     )
 }
 export default FormLogin

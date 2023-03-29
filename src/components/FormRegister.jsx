@@ -4,6 +4,8 @@ function FormRegister(){
         e.prevenDefault();
     }
     return(
+        <>
+      
         <form className='Conteiner' >
         <div>
             <label className='texto' htmlFor="name">Nombre</label>
@@ -28,6 +30,7 @@ function FormRegister(){
 
         <button className='boton' type="button" onClick={handlerClick}>Registrarse</button>
     </form>
+        </>
     )
 }
 export default FormRegister
