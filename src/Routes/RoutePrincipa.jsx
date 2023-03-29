@@ -13,10 +13,11 @@ import AboutPage from "../Page/AboutPage"
 import LoginPage from "../Page/LoginPage"
 import RegisterPage from "../Page/RegisterPage"
 
+
 function RoutePrincipal(){
     return(
         <>
-                    
+                 
           <Routes>
               
               <Route>

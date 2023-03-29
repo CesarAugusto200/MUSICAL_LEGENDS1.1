@@ -6,7 +6,7 @@ function RouteInicio(){
     return(
         <>
        
-       <Navbar2/>
+       
         <RoutePrincipal/>
         </>
     )
