@@ -6,7 +6,7 @@ function FormRegister(){
     const password = useRef()
 
     const form = useRef()
-    const endpoint = ''
+    const endpoint = 'http://localhost:8080/users/register'
 
     const handlerClick = (e)=>{
         navigate("/Login")
