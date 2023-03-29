@@ -1,7 +1,38 @@
 
 function FormRegister(){
-    const handlerClick =(e)=>{
-        e.prevenDefault();
+    const navigate = useNavigate()
+    const name = useRef()
+    const username = useRef()
+    const password = useRef()
+
+    const form = useRef()
+    const endpoint = ''
+
+    const handlerClick = (e)=>{
+        navigate("/Login")
+        e.preventDefault();
+
+        const newForm = new FormData(form.current)
+     
+
+        const options = {
+            method: 'POST',
+            headers : {
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                nombre: newForm.get('nombre'),
+                usuario: newForm.get('usuario'),
+                correo: newForm.get('correo'),
+                contrasenia: newForm.get('contrasenia')
+            })
+        }
+
+        fetch(endpoint, options) 
+        .then(response => response.json())
+        .then(data => {
+            alert(JSON.stringify(data))
+        })
     }
     return(
         <>

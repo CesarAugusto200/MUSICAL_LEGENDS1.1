@@ -2,9 +2,39 @@
 import { Link } from "react-router-dom";
 import "../assets/Style/Login.css"
 function FormLogin(){
-    const handlerClick =(e) =>{
-        e.preventDefaul();
+    const form =useRef();
+   const endpoint =""
+
+   const handlerClick = (e) =>{
+    
+    e.preventDefault();
+    const newForm = new FormData(form.current)
+   
+
+    const options ={
+        method :"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            usuario: newForm.get(""),
+            contrasenia: newForm.get("")
+        })
     }
+
+    fetch(endpoint, options)
+    .then(response => response.json())
+    .then (data =>{
+        if(data.status === true ){
+            alert(`Bienvenido: ${newForm.get(`usuario`)}`)
+            localStorage.setItem('data',JSON.stringify(data.data));
+            window.location="/Home";
+        }else
+            alert('Usuario no encontrado')
+        
+    })
+   }
+
     return(
         <>
                
