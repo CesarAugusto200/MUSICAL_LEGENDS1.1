@@ -1,6 +1,32 @@
 import {Formik} from "formik"
 import "../assets/Style/Citas.css"
 function Citas(){
+  const handleSubmit=(event)=>{ 
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "name":  nombre,
+      "product": producto,
+      "quantityOfProducts": cantidad,
+      "typeOfService": servicio
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:8080/citas/save", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
+  }
+  
     return(
         <>
        
