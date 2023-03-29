@@ -10,6 +10,7 @@ function NuestraInfo(){
         <ul className="dynamic-txts">
           <li><span>Cesar Augusto</span></li>  
           <li><span>Mauricio</span></li>  
+          <li><span>Emma</span></li>  
         </ul>
        
       </div >
