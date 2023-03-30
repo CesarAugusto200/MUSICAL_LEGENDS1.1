@@ -1,40 +1,39 @@
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/Style/Login.css"
 function FormLogin(){
-    const form =useRef();
-   const endpoint =""
+    const [email , setEmail] = useState("")
+     const [password , setPassword] = useState("")
+     const handleSubmit=(event)=>{
 
-   const handlerClick = (e) =>{
+        setEmail(document.getElementById ('email').value);
+        setPassword(document.getElementById ('password').value);
+
+        var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+
+var raw = JSON.stringify({
+  email: "cesar@gmail.com",
+  password: "cesar1234"
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
     
-    e.preventDefault();
-    const newForm = new FormData(form.current)
-   
 
-    const options ={
-        method :"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            usuario: newForm.get(""),
-            contrasenia: newForm.get("")
-        })
-    }
+fetch("http://localhost:8080/users/login", requestOptions)
+  .then(response => response.JSON())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+     }
 
-    fetch(endpoint, options)
-    .then(response => response.json())
-    .then (data =>{
-        if(data.status === true ){
-            alert(`Bienvenido: ${newForm.get(`usuario`)}`)
-            localStorage.setItem('data',JSON.stringify(data.data));
-            window.location="/Home";
-        }else
-            alert('Usuario no encontrado')
-        
-    })
-   }
-
+  
     return(
         <>
                
@@ -53,7 +52,7 @@ function FormLogin(){
                <input type="password" id="contrasenia" name='contrasenia' />
            </div>
                </div>
-               <button className="boton" type="button" onClick={handlerClick}>Inicar session</button>
+               <button className="boton" type="button" onClick={handleSubmit}>Inicar session</button>
                <Link className="link" to="/register">No tienes cuenta? Registrate aqui</Link>
      
        </form>

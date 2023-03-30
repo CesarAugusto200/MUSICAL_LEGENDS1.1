@@ -1,66 +1,62 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function FormRegister(){
-    const navigate = useNavigate()
-    const name = useRef()
-    const username = useRef()
-    const password = useRef()
 
-    const form = useRef()
-    const endpoint = ''
+function FormRegister() {
 
-    const handlerClick = (e)=>{
-        navigate("/Login")
-        e.preventDefault();
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        password: ""
+    });
+    const handlerSubmit = () => {
 
-        const newForm = new FormData(form.current)
-     
+        var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
-        const options = {
-            method: 'POST',
-            headers : {
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                nombre: newForm.get('nombre'),
-                usuario: newForm.get('usuario'),
-                correo: newForm.get('correo'),
-                contrasenia: newForm.get('contrasenia')
-            })
-        }
+var raw = JSON.stringify({
+  name: user.name,
+  email: user.email,
+  password: user.password
+});
 
-        fetch(endpoint, options) 
-        .then(response => response.json())
-        .then(data => {
-            alert(JSON.stringify(data))
-        })
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8080/users/register", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result), alert("todo bien"))
+  .catch(error => console.log('error', error), alert("todo mal"));
     }
-    return(
+
+    const hanlerchange = ({ target: { value, name } }) =>
+        setUser({ ...user, [name]: value });
+
+    return (
         <>
-      
-        <form className='Conteiner' >
-        <div>
-            <label className='texto' htmlFor="name">Nombre</label>
-            <input type="text" id="name" name="nombre" />
-        </div>
 
-        <div>
-            <label className='texto'>Usuario
-                <input type="text" name="usuario"/>
-            </label>
-        </div>
+            <form onSubmit={handlerSubmit} className='Conteiner' >
+                <div>
+                    <label className='texto' htmlFor="name">Nombre</label>
+                    <input type="text" id="name" onChange={hanlerchange} name="name" />
+                </div>
 
-        <div>
-            <label  className='texto' htmlFor="name">Correo electrónico</label>
-            <input type="text" id="name" name="correo" />
-        </div>
+                <div>
+                    <label className='texto' htmlFor="name">Correo electrónico</label>
+                    <input type="email" name="email" id="email" onChange={hanlerchange} />
+                </div>
 
-        <div>
-            <label className='texto'>Password</label>
-            <input type="password" name='contrasenia' />
-        </div>
+                <div>
+                    <label className='texto'>Password</label>
+                    <input type="password" onChange={hanlerchange} name='password' />
+                </div>
 
-        <button className='boton' type="button" onClick={handlerClick}>Registrarse</button>
-    </form>
+                <button className='boton' type="submit">Registrarse</button>
+            </form>
         </>
     )
 }
