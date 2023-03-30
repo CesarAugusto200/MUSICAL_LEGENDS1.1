@@ -11,7 +11,8 @@ function Musica (){
           <img src={Musica_Principiante} alt="" />
           </div>
           <h1> Curso de Musica para Principiantes</h1>
-          <p> Aqui aprenderas a tocar tu instrumento .</p>
+          <p>Lorem ipsum dolor sit amet, <br/>
+            consectetur adipiscing elit.</p>
          </div>
          <div className="button-wrapper"> 
         
@@ -33,7 +34,8 @@ function Musica (){
           <img src={Musica_Intermedio} alt="" />
           </div>
           <h1> Curso de Musica para Intermedio</h1>
-          <p> Aqui aprenderas a perfeccionar algo de tu instrumento  </p>
+          <p>Lorem ipsum dolor sit amet, <br/>
+            consectetur adipiscing elit.</p>
          </div>
          <div className="button-wrapper"> 
         
@@ -55,7 +57,8 @@ function Musica (){
           <img src={Musica_Profesional} alt="" />
           </div>
           <h1> Curso de Musica para Profesional</h1>
-          <p>Aqui seras un dios para la musica.</p>
+          <p>Lorem ipsum dolor sit amet, <br/>
+            consectetur adipiscing elit.</p>
          </div>
          <div className="button-wrapper"> 
         
