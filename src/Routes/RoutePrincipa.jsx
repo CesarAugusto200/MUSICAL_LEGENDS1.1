@@ -12,6 +12,7 @@ import CitasPage from "../Page/CitasPage"
 import AboutPage from "../Page/AboutPage"
 import LoginPage from "../Page/LoginPage"
 import RegisterPage from "../Page/RegisterPage"
+import VisualPage from "../Page/VisualPage"
 
 
 function RoutePrincipal(){
@@ -29,6 +30,7 @@ function RoutePrincipal(){
                  <Route path="/Musica" element={<MusicaPage/>}></Route> 
                  <Route path="/About" element={<AboutPage/>}></Route>    
                  <Route path="/Citas" element={<CitasPage/>}></Route>  
+                 <Route path="/Visual" element={<VisualPage/>}></Route>  
                  <Route path="/Curso1" element={<Curso1/>}></Route> 
                  <Route path="/Canto2" element={<Canto2/>}></Route> 
                  <Route path="/Canto3" element={<CantoPage3/>}></Route> 
