@@ -1,67 +1,93 @@
-
-import { useState } from "react";
+import React, {useState} from 'react';
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import "../assets/Style/Login.css"
-function FormLogin(){
-    const [email , setEmail] = useState("")
-     const [password , setPassword] = useState("")
-     const handleSubmit=(event)=>{
 
-        setEmail(document.getElementById ('email').value);
-        setPassword(document.getElementById ('password').value);
+function FormLogin() {
+    const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
 
-        var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+  const onSubmit = (value) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
+    var raw = JSON.stringify({
+      name: value.name,
+     
+      password: value.password,
+    });
 
-var raw = JSON.stringify({
-  email: "cesar@gmail.com",
-  password: "cesar1234"
-});
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-    
+    fetch("http://localhost:8080/users/login", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        alert(result)
+      })
+      .catch((error) => {
+        alert("todo mal" + error)
+      });
+    navigate("/Home");
+  };
 
-fetch("http://localhost:8080/users/login", requestOptions)
-  .then(response => response.JSON())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-     }
-
-  
-    return(
-        <>
-               
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete={"off"}
+        className="Conteiner"
+      >
         <div>
+          <label className="texto" htmlFor="name">
+            Nombre
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            {...register("name", {
+              required: {
+                value: true,
+                message: "Necesitas este campo",
+              },
+            })}
+          />
+        </div>
+
      
-                   <form className="Conteiner"  > 
-                   <div className="datos">
-               <label className="texto">Usuario
-                   <input className="dat" type="text"  id="usuario" name="usuario"/>
-               </label>
-           </div>
+        <div>
+          <label className="texto">Password</label>
+          <input
+            type="password"
+            name="password"
+            {...register("password", {
+              required: {
+                value: true,
+                message: "El campo es requerido",
+              },
+              minLength: {
+                value: 8,
+                message: "La contraseña debe tener al menos 8 caracteres",
+              },
+            })}
+          />
+        </div>
 
-           <div>
-           <div>
-               <label className="texto">Password</label>
-               <input type="password" id="contrasenia" name='contrasenia' />
-           </div>
-               </div>
-               <button className="boton" type="button" onClick={handleSubmit}>Inicar session</button>
-               <Link className="link" to="/register">No tienes cuenta? Registrate aqui</Link>
-     
-       </form>
-
-       
-    </div>
-
-       
-        </>
-    )
+        <button 
+          className="boton"
+          type="buton"
+        >
+          Login
+        </button>
+        <Link className="link" to="/register">No tienes cuenta? Registrate aqui</Link>
+      </form>
+    </>
+  );
 }
-export default FormLogin
+export default FormLogin;

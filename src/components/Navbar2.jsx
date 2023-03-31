@@ -1,7 +1,15 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, } from 'react-router-dom';
 import "../assets/Style/Navbar.css"
+
+
+const handleLogout = () => {
+
+};
+
 function Navbar2(){
+
     return(
+        
         <nav className='navcontainer'>
                 <h2> Musical <span> Legends</span></h2>
                  <NavLink 
@@ -41,8 +49,16 @@ function Navbar2(){
                     >
                         Agenda Tu clase
                     </NavLink> 
+
+
+                  
+
+                    
+                    
             </div>
+                    
             </nav>
+
     )
 }
 export default Navbar2

@@ -1,63 +1,107 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
+import "../assets/Style/Login.css"
 
 function FormRegister() {
+    const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
 
-    const [user, setUser] = useState({
-        name: "",
-        email: "",
-        password: ""
+  const onSubmit = (value) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      name: value.name,
+      email: value.email,
+      password: value.password,
     });
-    const handlerSubmit = () => {
 
-        var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-var raw = JSON.stringify({
-  name: user.name,
-  email: user.email,
-  password: user.password
-});
+    fetch("http://localhost:8080/users/register", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        alert(result)
+      })
+      .catch((error) => {
+        alert("todo mal" + error)
+      });
+    navigate("/");
+  };
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete={"off"}
+        className="Conteiner"
+      >
+        <div>
+          <label className="texto" htmlFor="name">
+            Nombre
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            {...register("name", {
+              required: {
+                value: true,
+                message: "Necesitas este campo",
+              },
+            })}
+          />
+        </div>
 
-fetch("http://localhost:8080/users/register", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result), alert("todo bien"))
-  .catch(error => console.log('error', error), alert("todo mal"));
-    }
+        <div>
+          <label className="texto" htmlFor="name">
+            Correo electrónico
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Necesitas este campo",
+              },
+            })}
+          />
+        </div>
 
-    const hanlerchange = ({ target: { value, name } }) =>
-        setUser({ ...user, [name]: value });
+        <div>
+          <label className="texto">Password</label>
+          <input
+            type="password"
+            name="password"
+            {...register("password", {
+              required: {
+                value: true,
+                message: "El campo es requerido",
+              },
+              minLength: {
+                value: 8,
+                message: "La contraseña debe tener al menos 8 caracteres",
+              },
+            })}
+          />
+        </div>
 
-    return (
-        <>
-
-            <form onSubmit={handlerSubmit} className='Conteiner' >
-                <div>
-                    <label className='texto' htmlFor="name">Nombre</label>
-                    <input type="text" id="name" onChange={hanlerchange} name="name" />
-                </div>
-
-                <div>
-                    <label className='texto' htmlFor="name">Correo electrónico</label>
-                    <input type="email" name="email" id="email" onChange={hanlerchange} />
-                </div>
-
-                <div>
-                    <label className='texto'>Password</label>
-                    <input type="password" onChange={hanlerchange} name='password' />
-                </div>
-
-                <button className='boton' type="submit">Registrarse</button>
-            </form>
-        </>
-    )
+        <button 
+          className="boton"
+          type="buton"
+        >
+          Registrarse
+        </button>
+      </form>
+    </>
+  );
 }
-export default FormRegister
+export default FormRegister;

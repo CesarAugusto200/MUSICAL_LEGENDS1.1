@@ -1,55 +1,107 @@
-import {Formik} from "formik"
+import React  from "react";
+import { Link } from "react-router-dom";
 import "../assets/Style/Citas.css"
-function Citas(){
-    return(
-        <>
-       
+import {Formik} from "formik"
+import { useState } from "react";
 
-        <Formik>
-
-               
-
-<form className="formulario" >
-
-<div className="contenedor">
-<label htmlFor="nombre">Nombre del Alumno</label>
-
-<input    name="nombre"  id="nombre" placeholder="Nombre"  onChange={e => setName(e.target.value)} />
-</div>
+function citas(){
 
 
-<div>
-<label className="contenedor" htmlFor="producto">Tipo De Curso</label>
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [email, setEmail] = useState(0)
+  const [courseType, setcourseType] = useState("")
+
+  const handleSubmit=()=>{ 
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      "name":  name,
+      "phone": phone,
+      "email": email,
+      "courseType": courseType
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:8080/citas/save", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+      
+
+  }
+
+
+
+
+
  
-<input   name="productos"  id="producto" placeholder="Curso" onChange={e => setName(e.target.value)} />
-</div>
 
 
 
-<div className="contenedor">
-<label htmlFor="cantidad">Nivel Del Curso</label>
+        return(
+          <>
+          
+          <Formik>
 
-<input   name="cantidad"   id="cantidad" placeholder="Nivel Del Curso"  onChange={e => setName(e.target.value)} />  
-</div>
+             
 
-
-
-
-
-  <button className="boton" type="submit">Enviar</button>
-
-</form>
+          <form onSubmit={handleSubmit()} className="formulario" >
 
 
 
+            
+          <div>
+          <label htmlFor="nombre">Nombre del Alumno</label>
+          
+          <input    name="nombre"  id="name" placeholder="Nombre"  onChange={e => setName(e.target.value)} />
+          </div>
 
 
-  
+          <div>
+          <label htmlFor="Numero">Numero del Alumno</label>
+           
+          <input   name="Numero"  id="phone" placeholder="Numero" onChange={e => setPhone(e.target.value)} />
+          </div>
 
-</Formik>
 
-        </>
+
+          <div>
+          <label htmlFor="Correo">Correo electrónico</label>
+          
+          <input   name="Correo"   id="email" placeholder="Correo electronico"  onChange={e => setEmail(e.target.value)} />  
+          </div>
+
+          
+          <div>
+          <label htmlFor="CoruseType">Tipo de Curso</label>
+           
+          <input   name="tipoCurso"    id=" courseType" placeholder="Tipo de curso"  onChange={e => setcourseType(e.target.value)} /> 
+          </div>
+
+
+            <button className="boton" type="submit">Enviar</button>
+          </form>
+
         
-    )
+       
+          </Formik>
+
+          <Link className="link1" to="/Visual">Lista De Citas</Link>
+          </>
+        )
+
 }
-export default Citas
+  
+     
+    
+
+export default citas;
