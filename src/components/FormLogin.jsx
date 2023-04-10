@@ -28,7 +28,7 @@ function FormLogin() {
     fetch("http://localhost:8080/users/login", requestOptions)
       .then((response) => response.text())
       .then((result) => {
-        alert(result)
+        alert("Bienvenido" + result)
       })
       .catch((error) => {
         alert("todo mal" + error)
@@ -37,6 +37,7 @@ function FormLogin() {
   };
 
   return (
+    
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}

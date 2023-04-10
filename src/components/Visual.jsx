@@ -15,7 +15,9 @@ function MyTable() {
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Email</th>
           <th>Numero</th>
+        
           
         </tr>
       </thead>
@@ -23,6 +25,7 @@ function MyTable() {
         {data.map(item => (
           <tr key={item.id}>
             <td>{item.name}</td>
+            <td>{item.email}</td>
             <td>{item.phone}</td>
            
           </tr>

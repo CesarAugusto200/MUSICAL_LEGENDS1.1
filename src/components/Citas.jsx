@@ -9,10 +9,11 @@ function citas(){
 
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
-  const [email, setEmail] = useState(0)
+  const [email, setEmail] = useState("")
   const [courseType, setcourseType] = useState("")
 
   const handleSubmit=()=>{ 
+    
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -35,18 +36,7 @@ function citas(){
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
-      
-
   }
-
-
-
-
-
- 
-
-
-
         return(
           <>
           
@@ -54,11 +44,7 @@ function citas(){
 
              
 
-          <form onSubmit={handleSubmit()} className="formulario" >
-
-
-
-            
+          <form className="formulario" >  
           <div>
           <label htmlFor="nombre">Nombre del Alumno</label>
           
@@ -88,7 +74,7 @@ function citas(){
           </div>
 
 
-            <button className="boton" type="submit">Enviar</button>
+            <button  onClick={handleSubmit()} className="boton" type="buttom">Enviar</button>
           </form>
 
         
@@ -96,6 +82,8 @@ function citas(){
           </Formik>
 
           <Link className="link1" to="/Visual">Lista De Citas</Link>
+          <Link className="link2" to="/FAQ">Preguntas Frecuentes</Link>
+        
           </>
         )
 
