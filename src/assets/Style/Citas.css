@@ -8,6 +8,15 @@
 }
 
 
+.link2{
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: stretch;
+  justify-content: center;
+}
+
+
+
 form{
     display: flex;
     flex-direction: column;

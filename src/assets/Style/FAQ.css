@@ -1,0 +1,40 @@
+.ui.styled.accordion {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 1300px;
+    max-width: 90%;
+    margin: 0 auto;
+  
+   
+  }
+  
+  .faq {
+    margin-bottom: 10px;
+  }
+  
+  .question {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .question:hover {
+    background-color: #ddd;
+  }
+  
+  .question.active {
+    background-color: #ddd;
+  }
+  
+  .answer {
+    background-color: #582e2e;
+    padding: 10px;
+    display: none;
+  }
+  
+  .answer.active {
+    display: block;
+  }
+  
