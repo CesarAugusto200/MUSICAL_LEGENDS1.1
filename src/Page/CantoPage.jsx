@@ -1,12 +1,7 @@
-import Canto from "../components/Atoms/Canto"
-import Navbar2 from "../components/Navbar2"
+import Canto from "../components/Canto"
 function CantoPage(){
     return(
-        <>
-        
-        <Navbar2/>
         <Canto/>
-        </>
     )
 }
 export default CantoPage

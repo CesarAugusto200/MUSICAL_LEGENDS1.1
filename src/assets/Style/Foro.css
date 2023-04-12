@@ -1,0 +1,49 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #0000009c;
+}
+
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #385898;
+  font-size: 18px;
+}
+
+input[type="text"],
+textarea,
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f0f2f5;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px #00a8ff;
+  background-color: #fff;
+}
+
+input[type="submit"] {
+  background-color: #1877f2;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0e5a9c;
+}

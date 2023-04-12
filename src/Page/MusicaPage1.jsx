@@ -1,7 +1,7 @@
-import MusicaCurso from "../components/Atoms/MusicaCurso"
-function MusicaPage1(){
+import Musica1 from "../components/Atoms/Musica1"
+function Musica1Page(){
     return(
-        <MusicaCurso/>
+        <Musica1/>
     )
 }
-export default MusicaPage1
+export default Musica1Page

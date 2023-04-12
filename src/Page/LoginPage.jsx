@@ -1,7 +1,7 @@
-import FormLogin from "../components/FormLogin"
+import Login from "../components/Login"
 function LoginPage(){
     return(
-        <FormLogin/>
+        <Login/>
     )
 }
 export default LoginPage

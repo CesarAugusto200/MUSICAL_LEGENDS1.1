@@ -1,16 +1,12 @@
+import RouterHome from "./Router/RouterHome"
 
-import RouteInicio from "../Routes/RouteInicio";
 function App() {
  
 
   return (
-    <>
-       
-        <RouteInicio/>
-        
-    </>
-    
+  <RouterHome/>
+
   )
 }
 
-export default App;
+export default App

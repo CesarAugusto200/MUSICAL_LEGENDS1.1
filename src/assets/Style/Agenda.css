@@ -1,0 +1,41 @@
+.form-container {
+  background-color: rgba(0, 0, 0, 0.25);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Añade esta regla */
+  align-items: center; /* Añade esta regla */
+  margin-top: 90px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+input,
+select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+select {
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius:
+}

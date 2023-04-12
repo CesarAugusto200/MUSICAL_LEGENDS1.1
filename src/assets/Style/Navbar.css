@@ -1,107 +1,22 @@
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "inter" ;
-}
 
-  nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-
-  .navbar{
-    display: flex;
-    list-style-type: none;
-    padding: 10px 20px;
-    transform: scale(1.125);  
-    padding: 20px;
-    transition: all .3s ease; 
-  
-  }
-
-
-
-  text1 text2 text3{
-    color: white;
-    
-  }
-
-  span{
-    color: #ea1538;
-  }
-  h2{
-    color: white;
-  }
-  
-  a{
-    color: white;
-    display: inherit;
-    
-  }
-
-
-
-    .text1{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      position: absolute;
-      left: 29%;
-    }
-  a.text2{
-    
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    left: -370%;
-    
-  }
-
-.text3{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: absolute;
-  left: -280%;
-}
-
-.text31{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: absolute;
-  left: -179%;
+#contenedor{
+  background-color:white;
 }
 
 
-
-.text1:hover{
-  transform: scale(1.2);
+#Home{
+  color: black;
 }
-.text2:hover{
 
-    transform: scale(1.2);
-  }
+#Canto{
+  color: black;
+}
 
-  .text3:hover{
-    transform: scale(1.2);
-  }
+#Musica{
+  color: black;
+}
 
-  .text31:hover{
-    transform:  scale(1.2);
-  }
+span{
+  color: #ea1538;
+}
 
-
-
-   
- 
-
-  
-
- 
-  

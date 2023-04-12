@@ -1,12 +1,7 @@
-import Musica from "../components/Atoms/Musica"
-import Navbar2 from "../components/Navbar2"
+import Musica from "../components/Musica"
 function MusicaPage(){
     return(
-        <>
-        <Navbar2/>
         <Musica/>
-
-        </>
     )
 }
 export default MusicaPage
